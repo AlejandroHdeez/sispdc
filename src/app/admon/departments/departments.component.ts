@@ -13,6 +13,7 @@ import { DepartmentService } from '@services/department.service';
 import { Country } from '@models/country.model';
 import { Router } from '@angular/router';
 import { Municipality } from '@models/municipality.model';
+import { DepartmentComponent } from './department/department.component';
 
 @Component({
   selector: 'app-departments',
@@ -65,6 +66,14 @@ export class DepartmentsComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  view(data: any): void {
+    this.dialog.open(DepartmentComponent, {
+      width: '950px',
+      disableClose: false,
+      data: data
+    });
   }
 
   upsert(data?: any): void {

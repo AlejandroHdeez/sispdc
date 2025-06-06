@@ -18,6 +18,7 @@ import { ColaboratorEditComponent } from './colaborator-edit/colaborator-edit.co
 import { CompanyService } from '@services/company.service';
 import { ExcelService } from '@services/excel.service';
 import { Report } from '../report/report';
+import { ColaboratorComponent } from './colaborator/colaborator.component';
 
 @Component({
   selector: 'app-colaborators',
@@ -74,6 +75,17 @@ export class ColaboratorsComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  view(colaborator: any): void {
+    this.dialog.open(ColaboratorComponent, {
+      width: '950px',
+      disableClose: false,
+      data: {
+        colaborator: colaborator,
+        companies: this.companies,
+      }
+    });
   }
 
   upsert(data?: any): void {

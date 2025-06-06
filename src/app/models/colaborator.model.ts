@@ -1,9 +1,9 @@
 export class Colaborator {
 
     id?: any;
-    fullName: string;
+    fullname: string;
     age: number;
-    phone: string;
+    phoneNumber: string;
     email: string;
     companyIds: string[];
 

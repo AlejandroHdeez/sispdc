@@ -1,0 +1,108 @@
+<mat-dialog-title mat-dialog-title>
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="text-start">
+            <span>Detalle de empresa </span>
+        </div>
+        <div class="text-end">
+            <button mat-mini-fab (click)="close()" matTooltip="Cerrar">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-dialog-title>
+
+<mat-dialog-content>
+    <div class="row m-t-10">
+        <div class="col-md-12">
+            <mat-card class="b-2 shadow-none m-t-0">
+                <mat-card-content>
+                    <div class="row">
+
+                        <div class="col-sm-12 col-md-12 m-b-24">
+                            <div class="d-flex align-items-center">
+                                <button mat-mini-fab class="bg-light-primary shadow-none rounded icon-48">
+                                    <i-tabler name="clock" class="icon-20 d-flex text-primary"></i-tabler>
+                                </button>
+                                <div class="m-l-16">
+                                    <span class="f-s-14 d-block m-b-4">Compañias: </span>
+                                    <h5 class="f-s-16 f-w-600 m-0 m-b-4">
+                                        <div *ngFor="let name of getCompanyNames(colaborator.companyIds)">
+                                            - {{ name }}
+                                        </div>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 m-b-24">
+                            <div class="d-flex align-items-center">
+                                <button mat-mini-fab class="bg-light-primary shadow-none rounded icon-48">
+                                    <i-tabler name="clock" class="icon-20 d-flex text-primary"></i-tabler>
+                                </button>
+                                <div class="m-l-16">
+                                    <span class="f-s-14 d-block m-b-4">Nombre completo: </span>
+                                    <h5 class="f-s-16 f-w-600 m-0 m-b-4">{{
+                                        colaborator.fullname ?
+                                        colaborator.fullname : ' - ' }}</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 m-b-24">
+                            <div class="d-flex align-items-center">
+                                <button mat-mini-fab class="bg-light-primary shadow-none rounded icon-48">
+                                    <i-tabler name="clock" class="icon-20 d-flex text-primary"></i-tabler>
+                                </button>
+                                <div class="m-l-16">
+                                    <span class="f-s-14 d-block m-b-4">Edad: </span>
+                                    <h5 class="f-s-16 f-w-600 m-0 m-b-4">{{
+                                        colaborator.age ?
+                                        colaborator.age : ' - ' }} años</h5>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-6 m-b-24">
+                            <div class="d-flex align-items-center">
+                                <button mat-mini-fab class="bg-light-primary shadow-none rounded icon-48">
+                                    <i-tabler name="clock" class="icon-20 d-flex text-primary"></i-tabler>
+                                </button>
+                                <div class="m-l-16">
+                                    <span class="f-s-14 d-block m-b-4">Telefono: </span>
+                                    <h5 class="f-s-16 f-w-600 m-0 m-b-4">{{
+                                        colaborator.phoneNumber ?
+                                        colaborator.phoneNumber : ' - ' }}</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 m-b-24">
+                            <div class="d-flex align-items-center">
+                                <button mat-mini-fab class="bg-light-primary shadow-none rounded icon-48">
+                                    <i-tabler name="clock" class="icon-20 d-flex text-primary"></i-tabler>
+                                </button>
+                                <div class="m-l-16">
+                                    <span class="f-s-14 d-block m-b-4">Correo electrónico: </span>
+                                    <h5 class="f-s-16 f-w-600 m-0 m-b-4">{{
+                                        colaborator.email ?
+                                        colaborator.email : ' - ' }}</h5>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="col-md-12 text-center">
+        <button mat-stroked-button color="warn" class="m-l-8" (click)="close()">
+            Cerrar
+        </button>
+    </div>
+</mat-dialog-actions>

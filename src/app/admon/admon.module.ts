@@ -32,20 +32,30 @@ import { CompanyEditComponent } from './companies/company-edit/company-edit.comp
 import { ColaboratorsComponent } from './colaborators/colaborators.component';
 import { ColaboratorEditComponent } from './colaborators/colaborator-edit/colaborator-edit.component';
 import { ColaboratorsAssignedComponent } from './companies/colaborators-assigned/colaborators-assigned.component';
+import { CountryComponent } from './countries/country/country.component';
+import { DepartmentComponent } from './departments/department/department.component';
+import { MunicipalityComponent } from './municipalities/municipality/municipality.component';
+import { CompanyComponent } from './companies/company/company.component';
+import { ColaboratorComponent } from './colaborators/colaborator/colaborator.component';
 
 @NgModule({
   declarations: [
     CountriesComponent,
     CountryEditComponent,
+    CountryComponent,
     DepartmentsComponent,
     DepartmentEditComponent,
+    DepartmentComponent,
     MunicipalitiesComponent,
     MunicipalityEditComponent,
+    MunicipalityComponent,
     CompaniesComponent,
-    ColaboratorsAssignedComponent,
     CompanyEditComponent,
+    CompanyComponent,
     ColaboratorsComponent,
-    ColaboratorEditComponent
+    ColaboratorEditComponent,
+    ColaboratorComponent,
+    ColaboratorsAssignedComponent,
   ],
   imports: [
     CommonModule,

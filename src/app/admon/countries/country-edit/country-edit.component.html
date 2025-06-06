@@ -19,8 +19,7 @@
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Nombre</mat-label>
                     <input type="text" matInput required id="name" name="name" formControlName="name"
-                        placeholder="Nombre"
-                        (blur)="common.updateErrorMessage('name', this.form.get('name')!, rules)" />
+                        placeholder="Nombre" />
                     @if (!form.get('name')?.valid) {
                     <mat-error>{{ rules.name.message }}</mat-error>
                     }
@@ -31,8 +30,7 @@
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Descripción</mat-label>
                     <input type="text" matInput required id="description" name="description"
-                        formControlName="description" placeholder="Descripción"
-                        (blur)="common.updateErrorMessage('description', this.form.get('description')!, rules)" />
+                        formControlName="description" placeholder="Descripción" />
                     @if (!form.get('description')?.valid) {
                     <mat-error>{{ rules.description.message }}</mat-error>
                     }
@@ -43,7 +41,6 @@
                 <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Código</mat-label>
                     <input type="text" matInput required id="code" name="code" formControlName="code"
-                        (blur)="common.updateErrorMessage('code', this.form.get('code')!, rules)"
                         placeholder="Código" />
                     @if (!form.get('code')?.valid) {
                     <mat-error>{{ rules.code.message }}</mat-error>

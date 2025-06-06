@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { MunicipalityEditComponent } from './municipality-edit/municipality-edit.component';
 import { Municipality } from '@models/municipality.model';
 import { MunicipalityService } from '@services/municipality.service';
+import { MunicipalityComponent } from './municipality/municipality.component';
 
 @Component({
   selector: 'app-municipalities',
@@ -64,6 +65,14 @@ export class MunicipalitiesComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  view(data: any): void {
+    this.dialog.open(MunicipalityComponent, {
+      width: '950px',
+      disableClose: false,
+      data: data
+    });
   }
 
   upsert(data?: any): void {

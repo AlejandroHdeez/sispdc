@@ -17,6 +17,7 @@ import { DepartmentService } from '@services/department.service';
 import { MunicipalityService } from '@services/municipality.service';
 import { ExcelService } from '@services/excel.service';
 import { Report } from '../report/report';
+import { CompanyComponent } from './company/company.component';
 
 @Component({
   selector: 'app-companies',
@@ -106,6 +107,19 @@ export class CompaniesComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  view(company: any): void {
+    this.dialog.open(CompanyComponent, {
+      width: '950px',
+      disableClose: false,
+      data: {
+        company: company,
+        countries: this.countries,
+        departments: this.departments,
+        municipalities: this.municipalities,
+      }
+    });
   }
 
   upsert(data?: any): void {

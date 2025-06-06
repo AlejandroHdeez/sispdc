@@ -11,6 +11,7 @@ import { Country } from '@models/country.model';
 import { CountryEditComponent } from './country-edit/country-edit.component';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CountryComponent } from './country/country.component';
 
 @Component({
   selector: 'app-countries',
@@ -73,6 +74,14 @@ export class CountriesComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  view(data: any): void {
+    this.dialog.open(CountryComponent, {
+      width: '950px',
+      disableClose: false,
+      data: data
+    });
   }
 
   upsert(data?: any): void {
