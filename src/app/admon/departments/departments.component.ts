@@ -123,8 +123,6 @@ export class DepartmentsComponent {
   }
 
   showMunicipalities(department: Department): void {
-    console.log(department, this.country);
-    
     this.router.navigate(['/admon/municipios'], { state: { department } });
   }
 

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { CompanyEditComponent } from './company-edit/company-edit.component';
 import { Company } from '@models/company.model';
 import { CompanyService } from '@services/company.service';
-import { forkJoin, take } from 'rxjs';
+import { concatMap, forkJoin, take, tap } from 'rxjs';
 import { CountryService } from '@services/country.service';
 import { DepartmentService } from '@services/department.service';
 import { MunicipalityService } from '@services/municipality.service';
@@ -48,23 +48,25 @@ export class CompaniesComponent {
   }
 
   ngOnInit(): void {
-    this.getCompanies();
   }
 
   ngAfterViewInit(): void {
   }
 
   getCatalogs() {
-    this.countrySrv.getCountries().subscribe(countries => {
-      this.countries = countries;
-    });
-
-    this.departmentSrv.getAll().subscribe(departments => {
-      this.departments = departments;
-    });
-
-    this.municipalitySrv.getAll().subscribe(municipalities => {
-      this.municipalities = municipalities;
+    this.countrySrv.getCountries().pipe(
+      tap(countries => this.countries = countries),
+      concatMap(() => this.departmentSrv.getAll()),
+      tap(departments => this.departments = departments),
+      concatMap(() => this.municipalitySrv.getAll()),
+      tap(municipalities => this.municipalities = municipalities)
+    ).subscribe({
+      next: () => {
+        this.getCompanies();
+      },
+      error: (error) => {
+        console.error('Error cargando catálogos', error);
+      }
     });
   }
 
@@ -154,8 +156,8 @@ export class CompaniesComponent {
     });
   }
 
-  showDepartments(company: Company): void {
-    this.router.navigate(['/admon/departamentos'], { state: { company } });
+  showColaborators(company: Company): void {
+    this.router.navigate(['/admon/empresas/colaboradores-asignados'], { state: { company } });
   }
 
   reload(): void {

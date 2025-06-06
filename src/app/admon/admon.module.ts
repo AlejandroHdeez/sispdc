@@ -31,6 +31,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { CompanyEditComponent } from './companies/company-edit/company-edit.component';
 import { ColaboratorsComponent } from './colaborators/colaborators.component';
 import { ColaboratorEditComponent } from './colaborators/colaborator-edit/colaborator-edit.component';
+import { ColaboratorsAssignedComponent } from './companies/colaborators-assigned/colaborators-assigned.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ColaboratorEditComponent } from './colaborators/colaborator-edit/colabo
     MunicipalitiesComponent,
     MunicipalityEditComponent,
     CompaniesComponent,
+    ColaboratorsAssignedComponent,
     CompanyEditComponent,
     ColaboratorsComponent,
     ColaboratorEditComponent

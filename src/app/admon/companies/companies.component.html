@@ -111,6 +111,11 @@
                         </button>
                         <mat-menu #menu="matMenu">
 
+                             <button (click)="showColaborators(element)" mat-menu-item>
+                                <mat-icon>people</mat-icon>
+                                <span>Colaboradores</span>
+                            </button>
+
                             <button (click)="upsert(element)" mat-menu-item>
                                 <mat-icon>edit</mat-icon>
                                 <span>Editar</span>

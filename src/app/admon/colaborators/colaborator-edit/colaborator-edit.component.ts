@@ -80,8 +80,6 @@ export class ColaboratorEditComponent {
   getCompanies() {
     this.companySrv.getAll().subscribe(companies => {
       this.companies = companies;
-      console.log(this.companies);
-      
     });
   }
 

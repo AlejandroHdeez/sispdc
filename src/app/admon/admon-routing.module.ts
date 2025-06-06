@@ -5,6 +5,7 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { MunicipalitiesComponent } from './municipalities/municipalities.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { ColaboratorsComponent } from './colaborators/colaborators.component';
+import { ColaboratorsAssignedComponent } from './companies/colaborators-assigned/colaborators-assigned.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,14 @@ const routes: Routes = [
         },
       },
       {
+        path: 'empresas/colaboradores-asignados',
+        component: ColaboratorsAssignedComponent,
+        data: {
+          title: 'Colaboradores Asignados',
+          urls: [{ title: 'Inicio', url: '/' }, { title: 'Colaboradores Asignados' }],
+        },
+      },
+      {
         path: 'colaboradores',
         component: ColaboratorsComponent,
         data: {
@@ -50,6 +59,7 @@ const routes: Routes = [
           urls: [{ title: 'Inicio', url: '/' }, { title: 'Colaboradores' }],
         },
       },
+
 
     ],
   },

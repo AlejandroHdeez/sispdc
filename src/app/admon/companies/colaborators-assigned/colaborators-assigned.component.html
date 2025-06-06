@@ -1,0 +1,81 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+        <div class="row justify-content-between m-b-8">
+            <div class="col-lg-3 col-sm-4">
+                <mat-form-field appearance="outline" class="w-100 hide-hint">
+                    <mat-label>Buscar</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" />
+                </mat-form-field>
+            </div>
+            <div class="col-lg-3 col-sm-3 text-center m-r-40">
+                <label class="h5 mb-0 fw-bold">Empresa: {{ company!.comercialName ? company!.comercialName : 'N/A'
+                    }}</label>
+            </div>
+            <div class="text-end">
+                <button (click)="back()" mat-mini-fab color="accent" matTooltip="Regresar">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <mat-table [dataSource]="dataSource" style="width: 100%;" matSort matSortDisableClear
+                matSortDirection="desc">
+
+                <ng-container matColumnDef="colaboratorId">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0">
+                        #
+                    </mat-header-cell>
+                    <mat-cell class="p-16 p-l-0" *matCellDef="let element; let i = index">
+                        {{ i + 1 + (paginator.pageIndex * paginator.pageSize) }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="fullname">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Nombre completo
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        <span #tooltip="matTooltip" [matTooltip]="element.fullname" matTooltipPosition="below">{{
+                            element.fullname }}</span>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="age">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Edad
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.age }} años
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="phoneNumber">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Telefono
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.phoneNumber }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Correo electrónico
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.email }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="defaultPagination"></mat-paginator>
+
+        </div>
+
+    </mat-card-content>
+</mat-card>

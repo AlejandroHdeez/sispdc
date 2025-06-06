@@ -1,5 +1,15 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, collectionData, addDoc, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  addDoc,
+  doc,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+} from '@angular/fire/firestore';
 import { Colaborator } from '@models/colaborator.model';
 import { from, Observable } from 'rxjs';
 
@@ -18,6 +28,12 @@ export class ColaboratorService {
   getAll(): Observable<Colaborator[]> {
     const ref = collection(this.firestore, 'colaboradores');
     return collectionData(ref, { idField: 'id' }) as Observable<Colaborator[]>;
+  }
+
+  getByCompany(companyId: string): Observable<Colaborator[]> {
+    const ref = collection(this.firestore, 'colaboradores');
+    const q = query(ref, where('companyIds', 'array-contains', companyId));
+    return collectionData(q, { idField: 'id' }) as Observable<Colaborator[]>;
   }
 
   add(colaborator: Omit<Colaborator, 'id'>): Observable<ApiResponse<{ id: string }>> {

@@ -82,14 +82,10 @@ export class MunicipalityEditComponent {
     }
 
     let data: Municipality = new Municipality().deserialize(this.form.value);
-    console.log(data);
-    
 
     if (this.municipality?.id) {
-      console.log('update', data);
       this.update(data);
     } else {
-      console.log('add', data);
       this.add(data);
     }
   }

@@ -159,8 +159,6 @@ export class CompanyEditComponent {
       next: (resp) => {
         if (resp.status) {
           this.reload = true;
-          console.log(this.reload);
-          
           this.close();
           this.toastr.success(resp.message);
         } else {
