@@ -1,0 +1,137 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+        <div class="row justify-content-between m-b-8">
+            <div class="col-lg-3 col-sm-4">
+                <mat-form-field appearance="outline" class="w-100 hide-hint">
+                    <mat-label>Buscar</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" />
+                </mat-form-field>
+            </div>
+            <div class="text-end">
+                <button mat-mini-fab (click)="upsert()" matTooltip="Nuevo Registro" class="m-r-4" color="primary">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button mat-mini-fab (click)="reload()" matTooltip="Actualizar">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <mat-table [dataSource]="dataSource">
+
+                <ng-container matColumnDef="companyId">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0">
+                        #
+                    </mat-header-cell>
+                    <mat-cell class="p-16 p-l-0" *matCellDef="let element; let i = index">
+                        {{ i + 1 + (paginator.pageIndex * paginator.pageSize) }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="nameCountry">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        País
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.nameCountry }}
+                    </mat-cell>
+                </ng-container>
+
+                 <ng-container matColumnDef="nameDepartment">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Departamento
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.nameDepartment }}
+                    </mat-cell>
+                </ng-container>
+
+                 <ng-container matColumnDef="nameMunicipality">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Municipio
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.nameMunicipality }}
+                    </mat-cell>
+                </ng-container>
+
+                 <ng-container matColumnDef="nit">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        NIT
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.nit }}
+                    </mat-cell>
+                </ng-container>
+
+                 <ng-container matColumnDef="comercialName">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Nombre Comercial
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.comercialName }}
+                    </mat-cell>
+                </ng-container>
+
+                 <ng-container matColumnDef="socialReason">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Razon Social
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.socialReason }}
+                    </mat-cell>
+                </ng-container>
+
+                 <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Correo electrónico
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.email }}
+                    </mat-cell>
+                </ng-container>
+
+                 <ng-container matColumnDef="phoneNumber">
+                    <mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Telefono
+                    </mat-header-cell>
+                    <mat-cell class="p-16" *matCellDef="let element" class="mat-body-1">
+                        {{ element.phoneNumber }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="options">
+                    <mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">
+                        Opciones
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="action-link">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Opciones">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+
+                            <button (click)="upsert(element)" mat-menu-item>
+                                <mat-icon>edit</mat-icon>
+                                <span>Editar</span>
+                            </button>
+
+                            <button (click)="deleteCompany(element)" mat-menu-item>
+                                <mat-icon>delete_outline</mat-icon>
+                                <span>Eliminar</span>
+                            </button>
+                        </mat-menu>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="defaultPagination"></mat-paginator>
+
+        </div>
+
+    </mat-card-content>
+</mat-card>

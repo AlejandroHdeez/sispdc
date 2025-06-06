@@ -1,0 +1,88 @@
+{
+  "header": {
+      "first_menu": "Inicio",
+      "second_menu": "Nosotros",
+      "third_menu": {
+          "title": "Productos y Licencias",
+          "first_item": "Por Paises",
+          "second_item": "Por Industrias",
+          "third_item": "Temáticas",
+          "fourth_item": "Licencias",
+          "fifth_item": "Preguntas Frecuentes"
+      },
+      "fourth_menu": {
+          "title": "Servicios",
+          "first_item": "Ciencia de Datos",
+          "second_item": "Contenido para Marcas"
+      },
+      "fifth_menu": "Contacto",
+      "sixth_menu": {
+          "title": "Perfil",
+          "first_item": "Ver Perfil",
+          "second_item": "Editar Perfil",
+          "third_item": "Ver Productos Comprados",
+          "fourth_item": "Cambiar Contraseña"
+      },
+      "seventh_menu": "Carrito",
+      "eigth_menu": "Cerrar Sesión",
+      "nineth_menu": "Iniciar Sesión"
+  },
+  "starter": {
+      "welcome_section": {
+          "title": "Bienvenido"
+      }
+  },
+  "home": {
+      "home_section": {
+          "flag_esp": "Español",
+          "flag_en": "Inglés"
+      },
+      "searchbar": {
+          "text": "Busca la información que necesitas"
+      },
+      "searchbar_options_section": {
+          "first_option": "Productos Destacados",
+          "second_option": "Conoce Expertos",
+          "third_option": "Actividades Recientes",
+          "fourth_option": "Estándares"
+      },
+      "featured_products_section": {
+          "title": "Productos Destacados"
+      },
+      "banner_section": {
+          "button_text": "Contáctanos"
+      },
+      "experts_section": {
+          "title": "Conoce a los Expertos",
+          "view_profile": "Ver perfil"
+      },
+      "news_section": {
+          "title": "Noticias",
+          "read_more": "Leer Más"
+      }
+  },
+  "sidebar": {
+      "header": {
+          "title": "Filtros"
+      },
+      "results": {
+          "text_one": "Se encontraron",
+          "text_two": "resultados para"
+      },
+      "first_menu": {
+          "title": "Industria"
+      },
+      "second_menu": {
+          "title": "Tipo de Producto"
+      },
+      "third_menu": {
+          "title": "Perfil"
+      },
+      "fourth_menu": {
+          "title": "País"
+      },
+      "fifth_menu": {
+          "title": "Temática"
+      }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "header": {
+    "first_menu": "Home",
+    "second_menu": "About",
+    "third_menu": {
+      "title": "Products and Licenses",
+      "first_item": "By Countries",
+      "second_item": "By Industries",
+      "third_item": "Themes",
+      "fourth_item": "Licenses",
+      "fifth_item": "Frequently Asked questions"
+    },
+    "fourth_menu": {
+      "title": "Services",
+      "first_item": "Science of Data",
+      "second_item": "Brands Content"
+    },
+    "fifth_menu": "Contact",
+    "sixth_menu": {
+      "title": "Profile",
+      "first_item": "View Profile",
+      "second_item": "Edit Profile",
+      "third_item": "View Purchased Products ",
+      "fourth_item": "Change Password"
+    },
+    "seventh_menu": "Cart",
+    "eigth_menu": "Sign out",
+    "nineth_menu": "Sign in"
+  },
+  "starter": {
+    "welcome_section": {
+      "title": "Welcome"
+    }
+  },
+  "home": {
+    "home_section": {
+      "flag_esp": "Spanish",
+      "flag_en": "English"
+    },
+    "searchbar": {
+      "text": "Find the information you need"
+    },
+    "searchbar_options_section": {
+      "first_option": "Featured Products",
+      "second_option": "Known experts",
+      "third_option": "Recent Activities",
+      "fourth_option": "Standards"
+    },
+    "featured_products_section": {
+      "title": "Featured Products",
+      "view_more_article": "View more",
+      "view_more_general": "View More"
+    },
+    "banner_section": {
+      "button_text": "Contact us"
+    },
+    "experts_section": {
+      "title": "Meet the Experts",
+      "view_profile": "View profile"
+    },
+    "news_section": {
+      "title": "News",
+      "read_more": "Read More"
+    }
+  },
+  "sidebar": {
+    "header": {
+      "title": "Filters"
+    },
+    "results": {
+      "text_one": "Were found",
+      "text_two": "results for"
+    },
+    "first_menu": {
+      "title": "Industry"
+    },
+    "second_menu": {
+      "title": "Product Type"
+    },
+    "third_menu": {
+      "title": "Profile"
+    },
+    "fourth_menu": {
+      "title": "Country"
+    },
+    "fifth_menu": {
+      "title": "Themes"
+    }
+  }
+}

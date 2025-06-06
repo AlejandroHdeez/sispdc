@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.d-block {
+  display: block !important;
+}
+
+.swal2-popup {
+  line-height: 1.5;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: red;
+}
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled) .mdc-switch__shadow {
+  background-color: #97a8b4;
+  /*replace with your color*/
+}
+
+.mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled) .mdc-switch__track::after {
+  background-color: #97a8b4 !important;
+  /*replace with your color*/
+}
+
+.background-excel {
+ background-color: rgb(7, 165, 7) !important;
+}

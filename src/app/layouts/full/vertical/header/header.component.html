@@ -1,0 +1,316 @@
+<mat-toolbar class="topbar">
+  <!-- --------------------------------------------------------------- -->
+  <!-- Desktop Menu -->
+  @if(showToggle) {
+  <button mat-icon-button (click)="toggleCollapsed.emit()" class="d-flex justify-content-center">
+    <i-tabler name="align-left" class="icon-20 d-flex"></i-tabler>
+  </button>
+  }
+
+  <!-- Mobile Menu -->
+  @if(!showToggle) {
+  <button mat-icon-button (click)="toggleMobileNav.emit()" class="d-flex justify-content-center">
+    <i-tabler name="align-left" class="icon-20 d-flex"></i-tabler>
+  </button>
+  }
+
+  <!-- Mobile Menu -->
+  <button mat-stroked-button class="d-none d-lg-flex">
+    <div class="d-flex align-items-center" matTooltip="Sistema Administrativo - PDC">
+      <i-tabler name="device-desktop" class="icon-20 d-flex m-r-12" style="color: #6fdba4;"></i-tabler>
+      <small style="color: #6fdba4;" class="d-block f-s-12 f-w-400 text-center">SISPDC</small>
+    </div>
+  </button>
+
+  <button mat-icon-button class="d-flex d-lg-none flex-column align-items-center pt-2 pr-3"
+    matTooltip="Sistema Administrativo - PDC">
+    <i-tabler name="device-desktop" class="icon-20" style="color: #6fdba4;"></i-tabler>
+    <small style="color: #6fdba4;" class="d-block f-s-12 f-w-400 text-center">SISPDC</small>
+  </button>
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- @if(this.federations != null) {
+  <div class="d-none d-lg-flex">
+    <button mat-fab extended color="inherit" [matMenuTriggerFor]="federationb" aria-label="Notifications">
+      <div class="d-flex align-items-center">
+        <span
+          class="text-primary bg-light-primary p-x-8 p-y-10 d-flex align-items-center justify-content-center shadow-none rounded">
+          {{ currentFederation.federationAcronym }}
+        </span>
+        <div class="m-l-16 text-left d-none d-lg-flex">
+          <div>
+            <h5 class="f-s-16">{{ currentFederation.federation }}</h5>
+            <span class="f-s-14 mat-body-1">Click para cambiar</span>
+          </div>
+        </div>
+      </div>
+    </button>
+
+    <mat-menu #federationb="matMenu" xPosition="before" class="topbar-dd cardWithShadow">
+      <ng-scrollbar class="position-relative" style="height: 350px">
+        <div class="p-x-32 p-y-16">
+          <div class="d-flex align-items-center p-b-24 b-b-1 m-t-16">
+            <div class="m-l-16">
+              <h6 class="f-s-16 f-w-600 m-0 mat-subtitle-1">{{ currentFederation.federationAcronym }}</h6>
+              <span class="f-s-14 mat-body-1 d-block m-b-4">{{ currentFederation.federation }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-x-32">
+          @for(item of federations; track item.federationId) {
+          @if(item.federationId != currentFederation.federationId){
+          <a type="button" (click)="changeFederation(item)"
+            class="p-y-16 text-decoration-none d-block text-hover-primary">
+            <div class="d-flex align-items-center">
+              <span
+                class="text-primary bg-light-primary icon-50 d-flex align-items-center justify-content-center shadow-none rounded">
+                <i-tabler [name]="'arrow-badge-right'" class="icon-20" />
+              </span>
+
+              <div class="m-l-16">
+                <h5 class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1 hover-text">
+                  {{ item.federationAcronym }}
+                </h5>
+                <span class="mat-body-1">{{ item.federation }}</span>
+              </div>
+            </div>
+          </a>
+          }
+          }
+        </div>
+      </ng-scrollbar>
+    </mat-menu>
+  </div>
+  } -->
+  <!-- --------------------------------------------------------------- -->
+
+  <span class="flex-1-auto"></span>
+
+  <div class="d-none d-lg-flex">
+    <button mat-fab extended color="inherit" [matMenuTriggerFor]="supportMenu" aria-label="Notifications">
+      <div class="d-flex align-items-center">
+        <span
+          class="text-primary bg-light-primary p-x-8 p-y-10 d-flex align-items-center justify-content-center shadow-none rounded">
+          <i-tabler name="help-circle" class="icon-20"></i-tabler>
+        </span>
+        <div class="m-l-16 text-left d-none d-lg-flex">
+          <div>
+            <h5 class="f-s-16">Soporte</h5>
+            <span class="f-s-14 mat-body-1">Click para info</span>
+          </div>
+        </div>
+      </div>
+    </button>
+
+
+
+    <mat-menu #supportMenu="matMenu" xPosition="before" class="topbar-dd cardWithShadow">
+      <div class="p-3">
+        <div class="">
+          <div class="col-12" *ngFor="let contact of supportContacts">
+            <a [href]="contact.link" target="_blank"
+              class="d-flex align-items-center text-decoration-none m-b-3 p-2 rounded hover-bg-light">
+              <span class="bg-light-primary rounded icon-40 d-flex align-items-center justify-content-center">
+                <mat-icon>{{ contact.icon }}</mat-icon>
+              </span>
+              <div class="m-l-16">
+                <h5 class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1">
+                  {{ contact.name }}
+                </h5>
+                <span class="mat-body-1 f-s-12">{{ contact.id }}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </mat-menu>
+  </div>
+
+  <!-- Mobile Menu -->
+  <button mat-fab extended color="inherit" [matMenuTriggerFor]="supportMenu"
+    class="d-flex d-lg-none flex-column align-items-center pt-1 pr-2" matTooltip="Soporte">
+    <div class="d-flex align-items-center">
+      <span
+        class="text-primary bg-light-primary p-x-8 p-y-10 d-flex align-items-center justify-content-center shadow-none rounded">
+        <i-tabler name="help-circle" class="icon-20"></i-tabler>
+      </span>
+    </div>
+  </button>
+
+  <!-- Mobile Menu -->
+  <!-- <button mat-icon-button (click)="toggleMobileFilterNav.emit()" class="d-flex d-lg-none justify-content-center">
+    <i-tabler name="grid-dots" class="icon-20 d-flex"></i-tabler>
+  </button> -->
+
+  <!-- --------------------------------------------------------------- -->
+  <!--  Search -->
+  <!-- --------------------------------------------------------------- -->
+  <!-- <button mat-stroked-button class="d-none d-lg-flex" (click)="openDialog()">
+    <div class="d-flex align-items-center">
+      <i-tabler name="search" class="icon-20 d-flex m-r-10"></i-tabler> Try to
+      Searching...
+    </div>
+  </button> -->
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- langugage Dropdown -->
+  <!-- --------------------------------------------------------------- -->
+  <!-- <button [matMenuTriggerFor]="flags" mat-icon-button class="m-l-10">
+    <img [src]="selectedLanguage.icon" class="rounded-circle object-cover icon-20" />
+  </button>
+  <mat-menu #flags="matMenu" class="cardWithShadow">
+    @for(lang of languages; track lang) {
+    <button mat-menu-item (click)="changeLanguage(lang)">
+      <div class="d-flex align-items-center">
+        <img [src]="lang.icon" class="rounded-circle object-cover m-r-8 icon-20" />
+        <span class="mat-subtitle-1 f-s-14">{{ lang.language }}</span>
+      </div>
+    </button>
+    }
+  </mat-menu> -->
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- Messages Dropdown -->
+  <!-- --------------------------------------------------------------- -->
+  <!-- <button mat-icon-button [matMenuTriggerFor]="msgMenu" aria-label="Messages">
+    <i-tabler class="d-flex" name="message-2"></i-tabler>
+    <div class="pulse">
+      <span class="heartbit border-primary"></span>
+      <span class="point bg-primary"></span>
+    </div>
+  </button>
+  <mat-menu #msgMenu="matMenu" xPosition="before" class="topbar-dd cardWithShadow">
+    <div class="d-flex align-items-center p-x-32 p-y-16">
+      <h6 class="f-s-16 f-w-600 m-0 mat-subtitle-1">Mensajes</h6>
+      <span class="m-l-16">
+        <span class="bg-warning text-white p-x-8 p-y-4 f-w-500 rounded f-s-12">{{ notifications.length }} nuevo</span>
+      </span>
+    </div>
+
+    @for(notification of notifications; track notification.title) {
+    <button mat-menu-item class="p-x-32 p-y-16">
+      <div class="d-flex align-items-center">
+        <img [src]="notification.img" class="rounded-circle" width="48" />
+        <div class="m-l-16">
+          <h5 class="f-s-14 f-w-600 m-0 mat-subtitle-1">
+            {{ notification.title }}
+          </h5>
+          <span>{{ notification.subtitle }}</span>
+        </div>
+      </div>
+    </button>
+    }
+
+    <div class="p-y-12 p-x-32">
+      <button mat-flat-button color="primary" class="w-100">
+        See All Messages
+      </button>
+    </div>
+  </mat-menu> -->
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- Shortcuts Dropdown -->
+  <!-- --------------------------------------------------------------- -->
+
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- navigate to sso -->
+  <!-- --------------------------------------------------------------- -->
+  <a mat-icon-button routerLink="/starter" matTooltip="Inicio">
+    <mat-icon style="font-size: 24px !important;">dashboard</mat-icon>
+  </a>
+  <!--
+  @if(this.periodFeatured != null) {
+  <div class="d-none d-lg-flex">
+    <button mat-fab extended color="inherit" [matMenuTriggerFor]="currentPeriodb" aria-label="Notifications">
+      <div class="d-flex align-items-center">
+        <div class="m-l-16 text-left d-none d-lg-flex">
+          <div>
+            <h5 class="f-s-16"> {{ periodFeatured.year }}</h5>
+            <span class="f-s-14 mat-body-1">Click para cambiar</span>
+          </div>
+        </div>
+      </div>
+    </button>
+
+    <mat-menu #currentPeriodb="matMenu" xPosition="before" class="topbar-dd cardWithShadow">
+      <ng-scrollbar class="position-relative" style="height: 350px">
+        <div class="p-x-32 p-y-16">
+
+          <div class="d-flex align-items-center p-b-24 b-b-1 m-t-16">
+            <div class="m-l-16">
+              <h6 class="f-s-16 f-w-600 m-0 mat-subtitle-1">{{ periodFeatured.year }}</h6>
+              <span class="f-s-14 mat-body-1 d-block m-b-4">Del: {{ periodFeatured.initAt | date : 'dd-MM-yyyy' }} - Al: {{
+                periodFeatured.endAt | date : 'dd-MM-yyyy' }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-x-32">
+          @for(item of periods; track item.periodId) {
+
+          <a type="button" (click)="changePeriod(item)" class="p-y-16 text-decoration-none d-block text-hover-primary">
+            <div class="d-flex align-items-center">
+              <span
+                class="text-primary bg-light-primary icon-50 d-flex align-items-center justify-content-center shadow-none rounded">
+                <i-tabler [name]="'arrow-badge-right'" class="icon-20" />
+              </span>
+
+              <div class="m-l-16">
+                <h5 class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1 hover-text">
+                  {{ item.year }}
+                </h5>
+                <span class="mat-body-1">Del: {{ item?.initAt | date : 'dd-MM-yyyy' }} - Al: {{ item?.endAt | date :
+                  'dd-MM-yyyy' }}</span>
+              </div>
+            </div>
+          </a>
+
+          }
+        </div>
+      </ng-scrollbar>
+    </mat-menu>
+  </div>
+  } -->
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- profile Dropdown -->
+  <!-- --------------------------------------------------------------- -->
+  <button mat-fab extended color="inherit" aria-label="Notifications">
+    <div class="d-flex align-items-center">
+      <img src="/assets/images/profile/user5.jpg" class="rounded-circle object-cover" width="40" />
+
+      <div class="m-l-16 text-left d-none d-lg-flex">
+        <div>
+          <h5 class="f-s-16">{{ 'Alejandro Hernandez' }}</h5>
+          <span class="f-s-14 mat-body-1">{{ '@AlejandroHdeez_' }}</span>
+        </div>
+      </div>
+    </div>
+  </button>
+
+  <!-- <mat-menu #profileMenu="matMenu" xPosition="before" class="topbar-dd cardWithShadow">
+    <ng-scrollbar class="position-relative" style="height: 250px">
+      <div class="p-x-32 p-y-16">
+        <h6 class="f-s-16 f-w-600 m-0 mat-subtitle-1">Perfil del Usuario</h6>
+
+        <div class="d-flex align-items-center p-b-24 b-b-1 m-t-16">
+          <img src="/assets/images/profile/user5.jpg" class="rounded-circle" width="95" />
+          <div class="m-l-16">
+            <h6 class="f-s-16 f-w-600 m-0 mat-subtitle-1">{{ user.fullname }}</h6>
+            <span class="d-flex align-items-center">
+              <i-tabler name="mail" class="icon-15 m-r-4"></i-tabler>
+              {{ user.email }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-y-12 p-x-32">
+        <button [routerLink]="['/authentication/login']" mat-flat-button color="primary" class="w-100">
+          Cerrar sesión
+        </button>
+      </div>
+    </ng-scrollbar>
+  </mat-menu> -->
+
+</mat-toolbar>
