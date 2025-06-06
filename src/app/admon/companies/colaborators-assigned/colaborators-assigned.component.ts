@@ -12,6 +12,8 @@ import { ColaboratorService } from '@services/colaborator.service';
 import { Company } from '@models/company.model';
 import { Router } from '@angular/router';
 import { Municipality } from '@models/municipality.model';
+import { ExcelService } from '@services/excel.service';
+import { Report } from '@app/admon/report/report';
 
 @Component({
   selector: 'app-colaborators-assigned',
@@ -33,7 +35,9 @@ export class ColaboratorsAssignedComponent {
     private colaboratorSrv: ColaboratorService,
     private status: Status,
     private common: Common,
-    private router: Router
+    private router: Router,
+    private excelSrv: ExcelService,
+    private report: Report
   ) {
     this.company = history.state.company ? history.state.company : null;
   }
@@ -61,6 +65,43 @@ export class ColaboratorsAssignedComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  downloadExcel(): any {
+    if (this.dataSource.data.length == 0) {
+      return Swal.fire('Ooops', 'No hay datos, inténtelo nuevamente', 'info')
+    }
+
+    Swal.fire({
+      title: 'Archivo descargado',
+      icon: 'success'
+    });
+
+    const name = `Colaboradores de la empresa ${this.company.comercialName}`;
+    const locale = 'en-US';
+
+    let dataXlsx: any[] = [];
+    dataXlsx = this.dataSource.data.map((item: any, index: number) => {
+
+      return {
+        'No.': (index + 1),
+        'Empresa': this.company.comercialName,
+        'Nombre completo': item.fullname,
+        'Edad': item.age,
+        'Teléfono': item.phoneNumber,
+        'Correo Electrónico': item.email,
+      };
+    });
+
+    this.excelSrv.exportAsExcelFile(dataXlsx, name.replaceAll(' ', '-'));
+  }
+
+  downloadPdf(): any {
+    const colaborators = this.dataSource.data;
+    if (colaborators.length === 0) {
+      return Swal.fire('Ooops', 'No hay datos, inténtelo nuevamente', 'info');
+    }
+    this.report.print(colaborators, this.company);
   }
 
 

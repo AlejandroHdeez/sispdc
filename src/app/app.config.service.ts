@@ -9,7 +9,7 @@ export class AppConfigService {
 
   private firebase = environment.firebase;
   private appProps = environment.appProps;
-  logo = './assets/images/logos/logo.jpg';
+  logo = './assets/images/logos/logo_sis.png';
   private supportContacts = environment.supportContacts;
 
   getAppProps(): any {

@@ -12,6 +12,13 @@
                     }}</label>
             </div>
             <div class="text-end">
+                <button mat-mini-fab (click)="downloadExcel()" matTooltip="Descargar en Excel" class="m-r-4"
+                    color="accent">
+                    <mat-icon>backup_table</mat-icon>
+                </button>
+                <button mat-mini-fab (click)="downloadPdf()" matTooltip="Descargar en PDF" class="m-r-4" color="accent">
+                    <mat-icon>picture_as_pdf</mat-icon>
+                </button>
                 <button (click)="back()" mat-mini-fab color="accent" matTooltip="Regresar">
                     <mat-icon>arrow_back</mat-icon>
                 </button>

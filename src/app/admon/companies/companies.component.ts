@@ -15,6 +15,8 @@ import { concatMap, forkJoin, take, tap } from 'rxjs';
 import { CountryService } from '@services/country.service';
 import { DepartmentService } from '@services/department.service';
 import { MunicipalityService } from '@services/municipality.service';
+import { ExcelService } from '@services/excel.service';
+import { Report } from '../report/report';
 
 @Component({
   selector: 'app-companies',
@@ -43,6 +45,8 @@ export class CompaniesComponent {
     private countrySrv: CountryService,
     private departmentSrv: DepartmentService,
     private municipalitySrv: MunicipalityService,
+    private excelSrv: ExcelService,
+    private report: Report
   ) {
     this.getCatalogs();
   }
@@ -158,6 +162,46 @@ export class CompaniesComponent {
 
   showColaborators(company: Company): void {
     this.router.navigate(['/admon/empresas/colaboradores-asignados'], { state: { company } });
+  }
+
+  downloadExcel(): any {
+    if (this.dataSource.data.length == 0) {
+      return Swal.fire('Ooops', 'No hay datos, inténtelo nuevamente', 'info')
+    }
+
+    Swal.fire({
+      title: 'Archivo descargado',
+      icon: 'success'
+    });
+
+    const name = `Empresas`;
+    const locale = 'en-US';
+
+    let dataXlsx: any[] = [];
+    dataXlsx = this.dataSource.data.map((item: any, index: number) => {
+
+      return {
+        'No.': (index + 1),
+        'País': item.nameCountry,
+        'Departamento': item.nameDepartment,
+        'Municipio': item.nameMunicipality,
+        'NIT': item.nit,
+        'Nombre Comercial': item.comercialName,
+        'Razon Social': item.socialReason,
+        'Correo electrónico': item.email,
+        'Telefono': item.phoneNumber,
+      };
+    });
+
+    this.excelSrv.exportAsExcelFile(dataXlsx, name.replaceAll(' ', '-'));
+  }
+
+  downloadPdf(): any {
+    const companies = this.empresas;
+    if (companies.length === 0) {
+      return Swal.fire('Ooops', 'No hay datos, inténtelo nuevamente', 'info');
+    }
+    this.report.printCompanies(companies);
   }
 
   reload(): void {

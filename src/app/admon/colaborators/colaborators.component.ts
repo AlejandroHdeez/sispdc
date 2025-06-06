@@ -16,6 +16,8 @@ import { DepartmentService } from '@services/department.service';
 import { MunicipalityService } from '@services/municipality.service';
 import { ColaboratorEditComponent } from './colaborator-edit/colaborator-edit.component';
 import { CompanyService } from '@services/company.service';
+import { ExcelService } from '@services/excel.service';
+import { Report } from '../report/report';
 
 @Component({
   selector: 'app-colaborators',
@@ -37,7 +39,9 @@ export class ColaboratorsComponent {
     private status: Status,
     private common: Common,
     private router: Router,
-    private companySrv: CompanyService
+    private companySrv: CompanyService,
+    private excelSrv: ExcelService,
+    private report: Report
   ) {
     this.getCompanies();
   }
@@ -122,6 +126,44 @@ export class ColaboratorsComponent {
         });
       }
     });
+  }
+
+  downloadExcel(): any {
+    if (this.dataSource.data.length == 0) {
+      return Swal.fire('Ooops', 'No hay datos, inténtelo nuevamente', 'info')
+    }
+
+    Swal.fire({
+      title: 'Archivo descargado',
+      icon: 'success'
+    });
+
+    const name = `Colaboradores`;
+    const locale = 'en-US';
+
+    let dataXlsx: any[] = [];
+    dataXlsx = this.dataSource.data.map((item: any, index: number) => {
+      const companyNames = this.getCompanyNames(item.companyIds).join(', ');
+
+      return {
+        'No.': (index + 1),
+        'Empresas': companyNames,
+        'Nombre completo': item.fullname,
+        'Edad': item.age,
+        'Teléfono': item.phoneNumber,
+        'Correo Electrónico': item.email,
+      };
+    });
+
+    this.excelSrv.exportAsExcelFile(dataXlsx, name.replaceAll(' ', '-'));
+  }
+
+  downloadPdf(): any {
+    const colaborators = this.dataSource.data;
+    if (colaborators.length === 0) {
+      return Swal.fire('Ooops', 'No hay datos, inténtelo nuevamente', 'info');
+    }
+    this.report.printColaborators(colaborators, this.companies);
   }
 
   showDepartments(colaborator: Colaborator): void {
